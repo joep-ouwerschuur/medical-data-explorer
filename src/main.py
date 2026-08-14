@@ -28,13 +28,26 @@ def main():
         print("Example: python3 src/main.py analyse datasets/cleveland.heart.csv --column age")
         return
 
-    if not data_analyzer.is_numeric_column(clean_df, args.column):
-       print(f"{args.column} is not a numeric column")
-       return
-
-    summary = data_analyzer.get_column_summary(clean_df, args.column)
 
     print(f"Analysis for column: {args.column}")
+
+    if data_analyzer.is_categorical_column(args.column):
+        summary = data_analyzer.get_categorical_summary(clean_df, args.column)
+
+
+        print("\nValue counts:")
+        print(summary["value_counts"])
+
+        print("\nPercentages:")
+        print(summary["percentages"])
+
+        return
+
+    if not data_analyzer.is_numeric_column(clean_df, args.column):
+      print(f"{args.column} is not a numeric column")
+      return
+
+    summary = data_analyzer.get_column_summary(clean_df, args.column)
 
     print("\nValue counts:")
     print(summary["value_counts"])

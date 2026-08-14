@@ -24,3 +24,26 @@ def get_column_summary(df, column):
 
 def is_numeric_column(df, column):
   return df[column].dtype in ["int64", "float64"]
+
+CATEGORICAL_COLUMNS = [
+    "sex",
+    "cp",
+    "fbs",
+    "restecg",
+    "exang",
+    "slope",
+    "ca",
+    "thal",
+    "num"
+]
+
+def is_categorical_column(column):
+  return column in CATEGORICAL_COLUMNS
+
+def get_categorical_summary(df, column):
+  return {
+    "value_counts": df[column].value_counts(),
+    "percentages": (df[column].value_counts(normalize=True) * 100).round(2)
+  }
+
+
