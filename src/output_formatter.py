@@ -11,8 +11,8 @@ def print_categorical_summary(column, summary):
 def print_numeric_summary(column, summary):
   print(f"Analysis for column: {column}")
 
-  print("\nValue counts:")
-  print(summary["value_counts"])
+  print("\nTop 10 value counts:")
+  print(summary["value_counts"].head(10))
 
   print("\nAverage:")
   print(summary["average"])

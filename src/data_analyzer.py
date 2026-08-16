@@ -15,11 +15,11 @@ def get_correlations(df):
 def get_column_summary(df, column):
   return {
     "value_counts": df[column].value_counts(),
-    "average": df[column].mean(),
-    "median": df[column].median(),
-    "minimum": df[column].min(),
-    "maximum": df[column].max(),
-    "standard_deviation": df[column].std()
+    "average": round(df[column].mean(), 2),
+    "median": round(df[column].median(), 2),
+    "minimum": round(df[column].min(), 2),
+    "maximum": round(df[column].max(), 2),
+    "standard_deviation": round(df[column].std(), 2)
   }
 
 def is_numeric_column(df, column):
