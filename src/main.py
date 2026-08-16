@@ -4,6 +4,8 @@ import data_cleaner
 import data_analyzer
 import data_inspector
 import data_loader
+import output_formatter
+
 from data_loader import load_csv
 
 def main():
@@ -29,43 +31,17 @@ def main():
         return
 
 
-    print(f"Analysis for column: {args.column}")
-
     if data_analyzer.is_categorical_column(args.column):
-        summary = data_analyzer.get_categorical_summary(clean_df, args.column)
-
-
-        print("\nValue counts:")
-        print(summary["value_counts"])
-
-        print("\nPercentages:")
-        print(summary["percentages"])
-
-        return
+       summary = data_analyzer.get_categorical_summary(clean_df, args.column)
+       output_formatter.print_categorical_summary(args.column, summary)
+       return
 
     if not data_analyzer.is_numeric_column(clean_df, args.column):
       print(f"{args.column} is not a numeric column")
       return
 
     summary = data_analyzer.get_column_summary(clean_df, args.column)
-
-    print("\nValue counts:")
-    print(summary["value_counts"])
-
-    print("\nAverage:")
-    print(summary["average"])
-
-    print("\nMedian:")
-    print(summary["median"])
-
-    print("\nMinimum:")
-    print(summary["minimum"])
-
-    print("\nMaximum:")
-    print(summary["maximum"])
-
-    print("\nStandard deviation:")
-    print(summary["standard_deviation"])
+    output_formatter.print_numeric_summary(args.column, summary)
 
   elif args.command == "visualize":
       import data_visualizer
