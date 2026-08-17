@@ -38,7 +38,7 @@ def print_available_columns(columns):
 
   for column in columns:
     description = column_metadata.get_column_description(column)
-    print(f"{column} - {description} ")
+    print(f"{column} - {description}")
 
 
 
