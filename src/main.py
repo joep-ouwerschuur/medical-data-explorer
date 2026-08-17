@@ -10,7 +10,7 @@ from data_loader import load_csv
 
 def main():
   parser = argparse.ArgumentParser(description="Medical Data Explorer")
-  parser.add_argument("command", choices=["inspect", "analyse", "visualize"])
+  parser.add_argument("command", choices=["inspect", "analyse", "visualize", "columns"])
   parser.add_argument("file_path")
   parser.add_argument("--column", choices=data_loader.COLUMN_NAMES)
 
@@ -23,6 +23,9 @@ def main():
     data_inspector.show_head(clean_df)
     data_inspector.show_shape(clean_df)
     data_inspector.show_missing_values(clean_df)
+
+  elif args.command == "columns":
+     output_formatter.print_available_columns(data_loader.COLUMN_NAMES)
 
   elif args.command == "analyse":
     if args.column is None:

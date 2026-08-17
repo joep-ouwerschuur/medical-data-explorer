@@ -30,3 +30,12 @@ def print_numeric_summary(column, description, summary):
 
   print("\nStandard deviation:")
   print(summary["standard_deviation"])
+
+def print_available_columns(columns):
+  print("Available columns:")
+
+  for column in columns:
+    print(column)
+
+
+
