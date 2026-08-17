@@ -21,6 +21,12 @@ Inspect a dataset:
 python3 src/main.py inspect datasets/cleveland.heart.csv
 ```
 
+List available columns:
+
+```bash
+python3 src/main.py columns datasets/cleveland.heart.csv
+```
+
 Analyze a numeric column:
 
 ```bash
@@ -38,3 +44,4 @@ Visualize the target distribution:
 ```bash
 python3 src/main.py visualize datasets/cleveland.heart.csv
 ```
+
