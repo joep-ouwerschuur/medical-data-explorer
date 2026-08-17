@@ -4,11 +4,37 @@ A Python project for loading, inspecting, cleaning, analyzing and visualizing me
 
 ## Current goal
 
-Build the first working version that can load a CSV file and how basic dataset information.
+Build the first working version that can load a CSV file and show basic dataset information.
 
 ## Tech stack
 
 - Python
 - pandas
 - NumPy
-- Matplotlib
+- Matplotlib  
+
+## Usage
+
+Inspect a dataset:
+
+```bash
+python3 src/main.py inspect datasets/cleveland.heart.csv
+```
+
+Analyze a numeric column:
+
+```bash
+python3 src/main.py analyse datasets/cleveland.heart.csv --column chol
+```
+
+Analyze a categorical column:
+
+```bash
+python3 src/main.py analyse datasets/cleveland.heart.csv --column sex
+```
+
+Visualize the target distribution:
+
+```bash
+python3 src/main.py visualize datasets/cleveland.heart.csv
+```
