@@ -46,4 +46,9 @@ def get_categorical_summary(df, column):
     "percentages": (df[column].value_counts(normalize=True) * 100).round(2)
   }
 
+def get_column_type(column):
+  if is_categorical_column(column):
+    return "categorical"
+
+  return "numeric"
 

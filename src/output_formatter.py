@@ -1,4 +1,5 @@
 import column_metadata
+import data_analyzer
 
 def print_categorical_summary(column, description, summary):
   print(f"Analysis for column: {column}")
@@ -38,7 +39,8 @@ def print_available_columns(columns):
 
   for column in columns:
     description = column_metadata.get_column_description(column)
-    print(f"{column} - {description}")
+    column_type = data_analyzer.get_column_type(column)
+    print(f"{column} - [{column_type}] - {description}")
 
 
 
