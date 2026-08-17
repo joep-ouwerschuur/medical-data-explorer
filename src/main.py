@@ -1,10 +1,10 @@
 import argparse
-
 import data_cleaner
 import data_analyzer
 import data_inspector
 import data_loader
 import output_formatter
+import column_metadata
 
 from data_loader import load_csv
 
@@ -30,10 +30,11 @@ def main():
         print("Example: python3 src/main.py analyse datasets/cleveland.heart.csv --column age")
         return
 
+    description = column_metadata.get_column_description(args.column)
 
     if data_analyzer.is_categorical_column(args.column):
        summary = data_analyzer.get_categorical_summary(clean_df, args.column)
-       output_formatter.print_categorical_summary(args.column, summary)
+       output_formatter.print_categorical_summary(args.column, description, summary)
        return
 
     if not data_analyzer.is_numeric_column(clean_df, args.column):
@@ -41,7 +42,7 @@ def main():
       return
 
     summary = data_analyzer.get_column_summary(clean_df, args.column)
-    output_formatter.print_numeric_summary(args.column, summary)
+    output_formatter.print_numeric_summary(args.column, description, summary)
 
   elif args.command == "visualize":
       import data_visualizer

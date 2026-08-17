@@ -1,5 +1,6 @@
-def print_categorical_summary(column, summary):
+def print_categorical_summary(column, description, summary):
   print(f"Analysis for column: {column}")
+  print(f"Description: {description}")
 
   print("\nValue counts:")
   print(summary["value_counts"])
@@ -8,8 +9,9 @@ def print_categorical_summary(column, summary):
   print(summary["percentages"])
 
 
-def print_numeric_summary(column, summary):
+def print_numeric_summary(column, description, summary):
   print(f"Analysis for column: {column}")
+  print(f"Description: {description}")
 
   print("\nTop 10 value counts:")
   print(summary["value_counts"].head(10))
