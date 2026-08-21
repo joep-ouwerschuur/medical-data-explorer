@@ -10,22 +10,19 @@ from data_loader import load_csv
 
 def main():
   parser = argparse.ArgumentParser(description="Medical Data Explorer")
-  parser.add_argument("command", choices=["inspect", "analyse", "visualize", "columns"])
+  parser.add_argument("command", choices=["inspect", "analyse", "visualize", "columns", "clean"])
   parser.add_argument("file_path")
   parser.add_argument("--column", choices=data_loader.COLUMN_NAMES)
 
   args = parser.parse_args()
 
   df = load_csv(args.file_path)
-  clean_df = data_cleaner.remove_missing_values(df)
+  clean_df = data_cleaner.clean_dataset(df)
 
   if args.command == "inspect":
     data_inspector.show_head(clean_df)
     data_inspector.show_shape(clean_df)
     data_inspector.show_missing_values(clean_df)
-
-  elif args.command == "columns":
-     output_formatter.print_available_columns(data_loader.COLUMN_NAMES)
 
   elif args.command == "analyse":
     if args.column is None:
@@ -52,6 +49,17 @@ def main():
       
       target_distribution = data_analyzer.get_target_distribution(clean_df)
       data_visualizer.plot_target_distribution(target_distribution)
+
+  elif args.command == "columns":
+     output_formatter.print_available_columns(data_loader.COLUMN_NAMES)
+
+  elif args.command == "clean":
+     output_formatter.print_cleaning_summary(len(df), len(clean_df))
+     
+
+
+
+
 
 
 main()

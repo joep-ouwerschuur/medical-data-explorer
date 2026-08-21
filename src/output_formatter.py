@@ -42,8 +42,14 @@ def print_available_columns(columns):
     column_type = data_analyzer.get_column_type(column)
     print(f"{column} - [{column_type}] - {description}")
 
+def print_cleaning_summary(rows_before, rows_after):
+  print("Rows before cleaning:")
+  print(rows_before)
 
+  print("\nRows after cleaning:")
+  print(rows_after)
 
-
+  print("\nRows removed:")
+  print(rows_before - rows_after)
 
 
