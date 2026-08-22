@@ -27,6 +27,18 @@ List available columns:
 python3 src/main.py columns datasets/cleveland.heart.csv
 ```
 
+Clean a dataset:
+
+```bash
+python3 src/main.py clean datasets/cleveland.heart.csv
+```
+
+Clean a dataset and save the cleaned result:
+
+```bash
+python3 src/main.py clean datasets/cleveland.heart.csv --output datasets/cleaned_heart.csv
+```
+
 Analyze a numeric column:
 
 ```bash
