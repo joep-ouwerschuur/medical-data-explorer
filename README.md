@@ -56,6 +56,7 @@ Visualize the target distribution:
 ```bash
 python3 src/main.py visualize datasets/cleveland.heart.csv
 ```
+
 ## Tests
 
 Run the test suite:
