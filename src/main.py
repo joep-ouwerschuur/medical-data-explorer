@@ -13,6 +13,7 @@ def main():
   parser.add_argument("command", choices=["inspect", "analyse", "visualize", "columns", "clean"])
   parser.add_argument("file_path")
   parser.add_argument("--column", choices=data_loader.COLUMN_NAMES)
+  parser.add_argument("--output")
 
   args = parser.parse_args()
 
@@ -55,6 +56,11 @@ def main():
 
   elif args.command == "clean":
      output_formatter.print_cleaning_summary(len(df), len(clean_df))
+
+     if args.output:
+        clean_df.to_csv(args.output, index=False, header=False)
+        output_formatter.print_file_saved(args.output)
+
      
 
 
