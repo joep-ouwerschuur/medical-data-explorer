@@ -49,7 +49,7 @@ def main():
       import data_visualizer
       
       target_distribution = data_analyzer.get_target_distribution(clean_df)
-      data_visualizer.plot_target_distribution(target_distribution)
+      data_visualizer.plot_target_distribution(target_distribution, args.output)
 
   elif args.command == "columns":
      output_formatter.print_available_columns(data_loader.COLUMN_NAMES)
