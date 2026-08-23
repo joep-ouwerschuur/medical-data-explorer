@@ -25,3 +25,4 @@ def test_get_categorical_summary_returns_counts_and_percentages():
   assert summary["percentages"][1] == 75
   assert summary["percentages"][0] == 25
 
+
