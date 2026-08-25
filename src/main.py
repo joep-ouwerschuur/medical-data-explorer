@@ -7,6 +7,7 @@ import output_formatter
 import column_metadata
 
 from data_loader import load_csv
+from commands import inspect_command
 
 def main():
   
@@ -22,9 +23,7 @@ def main():
   clean_df = data_cleaner.clean_dataset(df)
 
   if args.command == "inspect":
-    data_inspector.show_head(clean_df)
-    data_inspector.show_shape(clean_df)
-    data_inspector.show_missing_values(clean_df)
+    inspect_command.handle(clean_df)
 
   elif args.command == "analyse":
     if args.column is None:
