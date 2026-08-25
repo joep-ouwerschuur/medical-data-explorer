@@ -57,6 +57,12 @@ Visualize the target distribution:
 python3 src/main.py visualize datasets/cleveland.heart.csv
 ```
 
+Save the target distribution visualization:
+
+```bash
+python3 src/main.py visualize datasets/cleveland.heart.csv --output target_distribution.png
+```
+
 ## Tests
 
 Run the test suite:
