@@ -15,9 +15,10 @@ def handle(clean_df, column=None):
     return
 
   if not data_analyzer.is_numeric_column(clean_df, column):
-        print(f"{column} is not a numeric column")
-        return
+    print(f"{column} is not a numeric column")
+    return
   
   summary = data_analyzer.get_column_summary(clean_df, column)
   output_formatter.print_numeric_summary(column, description, summary)
   return
+
