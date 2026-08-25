@@ -52,7 +52,8 @@ def print_cleaning_summary(rows_before, rows_after):
   print("\nRows removed:")
   print(rows_before - rows_after)
 
+
 def print_file_saved(output_path):
-  print(f"\nCleaned dataset saved to: {output_path}")
+  print(f"\nFile saved to: {output_path}")
 
 

@@ -1,4 +1,5 @@
 import subprocess
+import os
 
 def test_clean_command_prints_cleaning_summary():
   result = subprocess.run(
@@ -30,4 +31,5 @@ def test_clean_command_with_output_creates_file(tmp_path):
 
   assert result.returncode == 0
   assert output_path.exists()
-  assert "Cleaned dataset saved to:" in result.stdout
+  assert "File saved to:" in result.stdout
+
