@@ -7,7 +7,7 @@ import output_formatter
 import column_metadata
 
 from data_loader import load_csv
-from commands import inspect_command
+from commands import inspect_command, columns_command, clean_command, visualize_command, analyze_command
 
 def main():
   
@@ -27,16 +27,16 @@ def main():
 
   elif args.command == "analyse":
     if args.column is None:
-        print("Please choose a column with --column")
-        print("Example: python3 src/main.py analyse datasets/cleveland.heart.csv --column age")
-        return
+      print("Please choose a column with --column")
+      print("Example: python3 src/main.py analyse datasets/cleveland.heart.csv --column age")
+      return
 
     description = column_metadata.get_column_description(args.column)
 
     if data_analyzer.is_categorical_column(args.column):
-       summary = data_analyzer.get_categorical_summary(clean_df, args.column)
-       output_formatter.print_categorical_summary(args.column, description, summary)
-       return
+      summary = data_analyzer.get_categorical_summary(clean_df, args.column)
+      output_formatter.print_categorical_summary(args.column, description, summary)
+      return
 
     if not data_analyzer.is_numeric_column(clean_df, args.column):
       print(f"{args.column} is not a numeric column")
@@ -46,22 +46,19 @@ def main():
     output_formatter.print_numeric_summary(args.column, description, summary)
 
   elif args.command == "visualize":
-      import data_visualizer
+    import data_visualizer
       
-      target_distribution = data_analyzer.get_target_distribution(clean_df)
-      data_visualizer.plot_target_distribution(target_distribution, args.output)
+    target_distribution = data_analyzer.get_target_distribution(clean_df)
+    data_visualizer.plot_target_distribution(target_distribution, args.output)
 
-      if args.output:
-         output_formatter.print_file_saved(args.output)
+    if args.output:
+      output_formatter.print_file_saved(args.output)
 
   elif args.command == "columns":
-     output_formatter.print_available_columns(data_loader.COLUMN_NAMES)
+    output_formatter.print_available_columns(data_loader.COLUMN_NAMES)
 
   elif args.command == "clean":
-     output_formatter.print_cleaning_summary(len(df), len(clean_df))
+    clean_command.handle(df, clean_df, args.output)
 
-     if args.output:
-        clean_df.to_csv(args.output, index=False, header=False)
-        output_formatter.print_file_saved(args.output)
-
+     
 main()
