@@ -4,7 +4,7 @@ A Python project for loading, inspecting, cleaning, analyzing and visualizing me
 
 ## Current goal
 
-Build the first working version that can load a CSV file and show basic dataset information.
+Build a small command-line data explorer that can inspect, clean, analyze, and visualize a medical CSV dataset.
 
 ## Tech stack
 
@@ -61,6 +61,18 @@ Save the target distribution visualization:
 
 ```bash
 python3 src/main.py visualize datasets/cleveland.heart.csv --output target_distribution.png
+```
+
+Visualize average cholesterol by diagnosis:
+
+```bash
+python3 src/main.py visualize datasets/cleveland.heart.csv --chart cholesterol-by-target
+```
+
+Save average cholesterol by diagnosis visualization:
+
+```bash
+python3 src/main.py visualize datasets/cleveland.heart.csv --chart cholesterol-by-target --output outputs/cholesterol.png
 ```
 
 ## Tests

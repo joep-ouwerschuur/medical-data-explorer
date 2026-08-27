@@ -9,7 +9,6 @@ from commands import clean_command
 from commands import columns_command
 from commands import analyze_command
 from commands import visualize_command
-from commands import clean_command
 
 def main():
   
@@ -18,6 +17,7 @@ def main():
   parser.add_argument("file_path")
   parser.add_argument("--column", choices=data_loader.COLUMN_NAMES)
   parser.add_argument("--output")
+  parser.add_argument("--chart", choices=["target", "cholesterol-by-target"], default="target")
 
   args = parser.parse_args()
 
@@ -34,7 +34,7 @@ def main():
     analyze_command.handle(clean_df, args.column)
 
   elif args.command == "visualize":
-    visualize_command.handle(clean_df, args.output)
+    visualize_command.handle(clean_df, args.output, args.chart)
 
   elif args.command == "clean":
     clean_command.handle(df, clean_df, args.output)
