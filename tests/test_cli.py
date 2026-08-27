@@ -33,3 +33,24 @@ def test_clean_command_with_output_creates_file(tmp_path):
   assert output_path.exists()
   assert "File saved to:" in result.stdout
 
+def test_visualize_command_with_cholesterol_chart_creates_file(tmp_path):
+  output_path = tmp_path / "cholesterol.png"
+
+  result = subprocess.run(
+    [
+      "python3",
+      "src/main.py",
+      "visualize",
+      "datasets/cleveland.heart.csv",
+      "--chart",
+      "cholesterol-by-target",
+      "--output",
+      str(output_path)
+    ],
+    capture_output=True,
+    text=True
+  )
+
+  assert result.returncode == 0
+  assert output_path.exists()
+  assert "File saved to:" in result.stdout
