@@ -13,7 +13,6 @@ def test_clean_command_prints_cleaning_summary():
   assert "Rows after cleaning:" in result.stdout
   assert "Rows removed:" in result.stdout
 
-
 def test_average_by_category_with_group_by_num_without_column():
   result = subprocess.run(
     [sys.executable,
@@ -50,7 +49,6 @@ def test_average_by_category_with_column_without_group_by():
   assert result.returncode == 2
   assert "--column and --group-by are required for average-by-category" in result.stderr
   assert "Traceback" not in result.stderr
-  
 
 def test_clean_command_with_output_creates_file(tmp_path):
   output_path = tmp_path / "cleaned_heart.csv"

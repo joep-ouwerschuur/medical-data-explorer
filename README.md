@@ -11,7 +11,7 @@ Build a small command-line data explorer that can inspect, clean, analyze, and v
 - Python
 - pandas
 - NumPy
-- Matplotlib  
+- Matplotlib
 
 ## Usage
 
@@ -74,6 +74,15 @@ Save average cholesterol by diagnosis visualization:
 ```bash
 python3 src/main.py visualize datasets/cleveland.heart.csv --chart cholesterol-by-target --output outputs/cholesterol.png
 ```
+
+Visualize the average of a column grouped by another column:
+
+```bash
+python3 src/main.py visualize datasets/cleveland.heart.csv --chart average-by-category --column age --group-by num
+```
+
+- `--column` selects the numeric column whose average is calculated.
+- `--group-by` selects the categorical column used to group the rows.
 
 ## Tests
 
