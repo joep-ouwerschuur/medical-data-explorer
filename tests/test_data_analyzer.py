@@ -26,3 +26,13 @@ def test_get_categorical_summary_returns_counts_and_percentages():
   assert summary["percentages"][0] == 25
 
 
+def test_get_average_by_category_groups_column_average():
+  df = pd.DataFrame({
+    "chol": [200, 240, 300, 360],
+    "sex": [0, 0, 1, 1]
+  })
+
+  result = data_analyzer.get_average_by_category(df, "chol", "sex")
+
+  assert result[0] == 220
+  assert result[1] == 330

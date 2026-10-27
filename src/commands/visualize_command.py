@@ -10,11 +10,11 @@ def handle(clean_df, output_path=None, chart="target", column=None, group_by=Non
 
   elif chart == "cholesterol-by-target":
     average_values = data_analyzer.get_average_by_category(clean_df, "chol", "num")
-    data_visualizer.plot_average_by_category(average_values, output_path)
+    data_visualizer.plot_average_by_category(average_values, "chol", "num", output_path)
 
   elif chart == "average-by-category":
     average_values = data_analyzer.get_average_by_category(clean_df, column, group_by)
-    data_visualizer.plot_average_by_category(average_values, output_path)
+    data_visualizer.plot_average_by_category(average_values, column, group_by, output_path)
 
   if output_path:
     output_formatter.print_file_saved(output_path)

@@ -22,6 +22,15 @@ def main():
 
   args = parser.parse_args()
 
+  if (
+    args.command == "visualize"
+    and args.chart == "average-by-category"
+    and (args.column is None or args.group_by is None)
+  ):
+    parser.error(
+      "--column and --group-by are required for average-by-category"
+    )
+
   df = load_csv(args.file_path)
   clean_df = data_cleaner.clean_dataset(df)
 

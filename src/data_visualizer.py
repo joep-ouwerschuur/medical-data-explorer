@@ -12,11 +12,11 @@ def plot_target_distribution(target_distribution, output_path=None):
   else: 
     plt.show()
 
-def plot_average_by_category(average_values, output_path=None):
+def plot_average_by_category(average_values, column, group_by, output_path=None):
   average_values.plot(kind="bar")
-  plt.title("Average by Category")
-  plt.xlabel("Category")
-  plt.ylabel("Average")
+  plt.title(f"Average {column} by {group_by}")
+  plt.xlabel(group_by)
+  plt.ylabel(f"Average {column}")
 
   plt.tight_layout()
 

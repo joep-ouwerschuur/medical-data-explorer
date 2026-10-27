@@ -21,4 +21,3 @@ def handle(clean_df, column=None):
   summary = data_analyzer.get_column_summary(clean_df, column)
   output_formatter.print_numeric_summary(column, description, summary)
   return
-
