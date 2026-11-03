@@ -12,6 +12,8 @@ def test_clean_command_prints_cleaning_summary():
   assert "Rows before cleaning:" in result.stdout
   assert "Rows after cleaning:" in result.stdout
   assert "Rows removed:" in result.stdout
+  assert "Rows removed due to missing values:" in result.stdout
+  assert "Rows removed as duplicates:" in result.stdout
 
 def test_average_by_category_with_group_by_num_without_column():
   result = subprocess.run(

@@ -42,18 +42,21 @@ def print_available_columns(columns):
     column_type = data_analyzer.get_column_type(column)
     print(f"{column} - [{column_type}] - {description}")
 
-def print_cleaning_summary(rows_before, rows_after):
+def print_cleaning_summary(cleaning_report):
   print("Rows before cleaning:")
-  print(rows_before)
+  print(cleaning_report["rows_before"])
+
+  print("\nRows removed due to missing values:")
+  print(cleaning_report["rows_removed_missing"])
+
+  print("\nRows removed as duplicates:")
+  print(cleaning_report["rows_removed_duplicates"])
 
   print("\nRows after cleaning:")
-  print(rows_after)
+  print(cleaning_report["rows_after"])
 
   print("\nRows removed:")
-  print(rows_before - rows_after)
-
+  print(cleaning_report["rows_before"] - cleaning_report["rows_after"])
 
 def print_file_saved(output_path):
   print(f"\nFile saved to: {output_path}")
-
-

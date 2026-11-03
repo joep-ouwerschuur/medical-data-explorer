@@ -47,6 +47,6 @@ def main():
     visualize_command.handle(clean_df, args.output, args.chart, args.column, args.group_by)
 
   elif args.command == "clean":
-    clean_command.handle(df, clean_df, args.output)
+    clean_command.handle(clean_df, cleaning_report, args.output)
 
 main()
