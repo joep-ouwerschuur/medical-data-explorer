@@ -32,7 +32,7 @@ def main():
     )
 
   df = load_csv(args.file_path)
-  clean_df = data_cleaner.clean_dataset(df)
+  clean_df, cleaning_report = data_cleaner.clean_dataset(df)
 
   if args.command == "inspect":
     inspect_command.handle(clean_df)

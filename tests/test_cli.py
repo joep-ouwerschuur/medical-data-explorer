@@ -50,6 +50,17 @@ def test_average_by_category_with_column_without_group_by():
   assert "--column and --group-by are required for average-by-category" in result.stderr
   assert "Traceback" not in result.stderr
 
+def test_inspect_command_succeeds_after_cleaning():
+  result = subprocess.run(
+    [sys.executable, "src/main.py", "inspect", "datasets/cleveland.heart.csv"],
+      capture_output=True,
+      text=True
+    )
+
+  assert result.returncode == 0
+  assert "Traceback" not in result.stderr
+
+
 def test_clean_command_with_output_creates_file(tmp_path):
   output_path = tmp_path / "cleaned_heart.csv"
 
