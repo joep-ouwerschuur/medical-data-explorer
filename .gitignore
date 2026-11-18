@@ -2,3 +2,8 @@
 __pycache__/
 .ipynb_checkpoints/
 outputs/
+
+
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
